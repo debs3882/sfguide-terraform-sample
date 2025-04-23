@@ -29,6 +29,11 @@ resource "snowflake_grant_privileges_to_account_role" "database_grant" {
   }
 }
 
+resource "snowflake_schema" "schema" {
+  database   = snowflake_database.db.name
+  name       = "TF_DEMO"
+}
+
 resource "snowflake_grant_privileges_to_account_role" "database_create_schema_grant" {
   provider          = snowflake.security_admin
   privileges        = ["USAGE","CREATE SCHEMA"]
@@ -38,10 +43,7 @@ resource "snowflake_grant_privileges_to_account_role" "database_create_schema_gr
   }
 }
 
-resource "snowflake_schema" "schema" {
-  database   = snowflake_database.db.name
-  name       = "TF_DEMO"
-}
+
 
 
 resource "snowflake_grant_privileges_to_account_role" "schema_grant" {
