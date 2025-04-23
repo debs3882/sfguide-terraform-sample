@@ -29,20 +29,10 @@ resource "snowflake_grant_privileges_to_account_role" "database_grant" {
 }
 
 resource "snowflake_schema" "schema" {
+  provider   = snowflake.security_admin
   database   = snowflake_database.db.name
   name       = "TF_DEMO"
 }
-
-resource "snowflake_grant_privileges_to_account_role" "database_create_schema_grant" {
-  provider          = snowflake.security_admin
-  privileges        = ["USAGE","CREATE SCHEMA"]
-  account_role_name = snowflake_account_role.role.name
-  on_schema {
-    schema_name = "\"${snowflake_database.db.name}\".\"${snowflake_schema.schema.name}\""
-  }
-}
-
-
 
 
 resource "snowflake_grant_privileges_to_account_role" "schema_grant" {
