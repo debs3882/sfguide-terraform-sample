@@ -8,8 +8,7 @@ terraform {
 }
 
 provider "snowflake" {
-  account_name="TJB01280"
-  organization_name="AYXJYKV"
+  account="ayxjykv-tjb01280"
   alias="security_admin"
   role="SECURITYADMIN"
 }
