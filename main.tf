@@ -14,7 +14,7 @@ provider "snowflake" {
   role="SECURITYADMIN"
 }
 
-resource "snowflake_role" "role"{
+resource "snowflake_account_role" "role"{
   provider=snowflake.security_admin
   name="TF_DEMO_SVC_ROLE"
 }
