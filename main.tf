@@ -9,6 +9,8 @@ terraform {
 
 provider "snowflake" {
   role = "SYSADMIN"
+  account_name="tjb01280"
+  organization_name="ayxjykv"
 }
 
 resource "snowflake_database" "db" {
